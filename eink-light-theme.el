@@ -3,6 +3,7 @@
 ;; Copyright (C) 2026 Milan Glacier
 
 ;; Author: Milan Glacier <dev@milanglacier.com>
+;; Assisted-by: Pi:claude-opus-5-5
 ;; URL: https://github.com/milanglacier/eink.el
 ;; Keywords: faces
 ;; SPDX-License-Identifier: MIT

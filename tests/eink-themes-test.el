@@ -3,6 +3,7 @@
 ;; Copyright (C) 2026 Milan Glacier
 
 ;; Author: Milan Glacier <dev@milanglacier.com>
+;; Assisted-by: Pi:claude-opus-5-5
 ;; SPDX-License-Identifier: MIT
 
 ;; This file is not part of GNU Emacs.
