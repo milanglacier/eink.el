@@ -351,7 +351,11 @@ bold, dates `fg2`, files `fg0` bold.
   `fg2`. `package-status-*`: installed/built-in `fg0`, available `fg1`,
   new bold, obsolete/held `fg3` strike-through.
 - nerd-icons (`nerd-icons-*` color faces), all-the-icons: every icon face
-  `fg1`. Hue in icons carries nothing on e-ink.
+  is `((t nil))`, so an icon takes the color of the text around it. Hue in
+  icons carries nothing on e-ink, and a fixed foreground would vanish on
+  inverted backgrounds such as the active mode line (doom-modeline's
+  colored major mode icon). The ibuffer column faces of these packages are
+  text, not icons, and follow the ibuffer rules.
 
 ## Terminal and ANSI
 
