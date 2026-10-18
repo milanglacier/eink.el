@@ -2233,26 +2233,25 @@ the theme file of THEME."
   "Switch between `eink-light' and `eink-dark'.
 Load `eink-light' if neither theme is enabled."
   (interactive)
-  (let ((theme (if (eq (eink-themes--current-variant) 'light)
-                   'eink-dark
-                 'eink-light)))
-    (mapc #'disable-theme '(eink-light eink-dark))
-    (if (custom-theme-p theme)
-        (enable-theme theme)
-      (load-theme theme t))))
+  (if-let* ((theme (if (eq (eink-themes--current-variant) 'light)
+                       'eink-dark
+                     'eink-light))
+            (_ (mapc #'disable-theme '(eink-light eink-dark)))
+            (_ (custom-theme-p theme)))
+      (enable-theme theme)
+    (load-theme theme t)))
 
 ;;;###autoload
 (defun eink-themes-get-color (name &optional variant)
   "Return the palette color NAME as a \"#RRGGBB\" string.
 NAME is a symbol such as `fg2'.  VARIANT is `light' or `dark'; it
 defaults to the variant of the enabled eink theme."
-  (let* ((variant (or variant
-                      (eink-themes--current-variant)
-                      (user-error "No eink theme is enabled")))
-         (color (assq name (eink-themes--palette variant))))
-    (if color
-        (cdr color)
-      (error "Unknown palette color: %S" name))))
+  (if-let* ((variant (or variant
+                         (eink-themes--current-variant)
+                         (user-error "No eink theme is enabled")))
+            (color (assq name (eink-themes--palette variant))))
+      (cdr color)
+    (error "Unknown palette color: %S" name)))
 
 (defun eink-themes--run-after-load-theme-hook (theme)
   "Run `eink-themes-after-load-theme-hook' if THEME is an eink theme."
