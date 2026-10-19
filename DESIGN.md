@@ -20,7 +20,9 @@ no presets, and almost no options.
    they help the user find something: region, search, cursor, the selected
    completion candidate, diffs.
 3. Thin, light text disappears. Text you must read is near black, and
-   decoration is never lighter than level 8 (`#888888`) on light.
+   decoration is never lighter than level 8 (`#888888`) on light. On dark,
+   the surrounding black thins light strokes further, so the dark foreground
+   grays sit two levels brighter than a mirror of the light ones.
 4. Font style works well on e-ink: **bold**, *italic*, underline, and the
    underline styles Emacs 30 supports on GUI frames: `line`, `double-line`,
    `wave`, `dots`, `dashes`. Boxes (`:box`) also render crisply.
@@ -61,10 +63,10 @@ The names are semantic so that one face table works for both variants.
 | `bg2` | fill: region, inactive mode line, diff added | `#dddddd` | `#333333` |
 | `bg3` | strong fill: lazy-highlight, selected candidate, refined diff | `#bbbbbb` | `#555555` |
 | `fg0` | main text                                    | `#000000` | `#ffffff` |
-| `fg1` | secondary text: strings, punctuation         | `#444444` | `#bbbbbb` |
-| `fg2` | comments, muted UI text                      | `#666666` | `#999999` |
-| `fg3` | line numbers, separators, inactive           | `#888888` | `#777777` |
-| `fg4` | non-text, whitespace, indent guides          | `#aaaaaa` | `#555555` |
+| `fg1` | secondary text: strings, punctuation         | `#444444` | `#dddddd` |
+| `fg2` | comments, muted UI text                      | `#666666` | `#bbbbbb` |
+| `fg3` | line numbers, separators, inactive           | `#888888` | `#999999` |
+| `fg4` | non-text, whitespace, indent guides          | `#aaaaaa` | `#777777` |
 
 There are no other colors. `unspecified` is allowed.
 

@@ -170,7 +170,7 @@
 
 (ert-deftest eink-themes-test-get-color ()
   (should (equal (eink-themes-get-color 'fg2 'light) "#666666"))
-  (should (equal (eink-themes-get-color 'fg2 'dark) "#999999"))
+  (should (equal (eink-themes-get-color 'fg2 'dark) "#bbbbbb"))
   (should-error (eink-themes-get-color 'no-such-color 'light))
   (eink-themes-test--with-clean-themes
     (should-error (eink-themes-get-color 'fg0) :type 'user-error)

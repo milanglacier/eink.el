@@ -105,10 +105,10 @@ the enabled eink theme, or the variant you pass (`light` or `dark`):
 | `bg2` | fill: region, inactive mode line, added lines | `#dddddd` | `#333333` |
 | `bg3` | strong fill: search matches, selected candidate | `#bbbbbb` | `#555555` |
 | `fg0` | main text                                     | `#000000` | `#ffffff` |
-| `fg1` | secondary text: strings, punctuation          | `#444444` | `#bbbbbb` |
-| `fg2` | comments, muted text                          | `#666666` | `#999999` |
-| `fg3` | line numbers, separators, inactive text       | `#888888` | `#777777` |
-| `fg4` | whitespace marks, indent guides               | `#aaaaaa` | `#555555` |
+| `fg1` | secondary text: strings, punctuation          | `#444444` | `#dddddd` |
+| `fg2` | comments, muted text                          | `#666666` | `#bbbbbb` |
+| `fg3` | line numbers, separators, inactive text       | `#888888` | `#999999` |
+| `fg4` | whitespace marks, indent guides               | `#aaaaaa` | `#777777` |
 
 The palette also has `term-black`, `term-red`, ..., `term-bright-white` for the
 16 terminal colors.
