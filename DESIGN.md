@@ -435,10 +435,10 @@ severity, evil state faces all bold; bar `fg0` background active,
 `embark-target` `bg2`, `embark-collect-*` same rules), evil
 (`evil-ex-info` bold, `evil-ex-substitute-matches` strike-through `fg2`,
 `evil-ex-substitute-replacement` bold underline, `evil-ex-search` inverted
-bold, `evil-ex-lazy-highlight` = lazy-highlight), evil-goggles (all `bg2`,
-delete `bg3`), evil-snipe (first match inverted bold, matches bold
-underline), evil-traces, flycheck, ghostel, git-gutter, helpful,
-highlight-quoted, hl-todo, jinx, jupyter, macrostep (`macrostep-expansion-highlight-face`
+bold, `evil-ex-lazy-highlight` = lazy-highlight), evil-goggles (all `bg3`,
+the strong fill, so a short flash shows on the panel), evil-snipe (first
+match inverted bold, matches bold underline), evil-traces, flycheck,
+ghostel, git-gutter, helpful, highlight-quoted, hl-todo, jinx, jupyter, macrostep (`macrostep-expansion-highlight-face`
 `bg1`, gensym bold box `fg3`), magit (and magit-section, git-commit,
 git-rebase, with-editor), marginalia, markdown-mode, minuet
 (`minuet-suggestion-face` `fg3` italic), copilot (`copilot-overlay-face`
