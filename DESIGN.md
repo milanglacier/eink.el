@@ -492,6 +492,7 @@ eink-light-theme.el    ;; (deftheme eink-light ... :background-mode 'light
                        ;; (provide-theme 'eink-light)
 eink-dark-theme.el     ;; same for dark
 tests/eink-themes-test.el
+tests/test-helper.el   ;; package.el setup for make lint, make test-full
 Makefile               ;; make compile, make test, make lint
 README.md
 DESIGN.md
@@ -512,7 +513,7 @@ only; no `class`/`min-colors` branches.
 
 Package header: `Package-Requires: ((emacs "30.1"))` (needed for the
 `double-line`, `dots`, `dashes` underline styles). Lexical binding,
-`checkdoc` clean, byte-compiles without warnings. Follow the conventions in
+`checkdoc` and `package-lint` clean, byte-compiles without warnings. Follow the conventions in
 the elisp-package-dev guidelines: plain-English names, terse docstrings.
 
 ## Tests
@@ -537,13 +538,11 @@ the elisp-package-dev guidelines: plain-English names, terse docstrings.
   the defface spec entirely (see `face-spec-recalc`), so faces the theme
   sets are covered by the gray check, and faces it leaves alone leak exactly
   the colors in their defface spec. Report all offenders at once. Faces
-  whose defface spec uses only `:inherit` are fine. When the environment variable
-  `EINK_THEMES_EXTRA_LOAD_PATH` is set (colon-separated directories, e.g.
-  `~/.config/emacs/straight/build/*`), also add those to `load-path`,
-  require the third-party packages listed above that are present, and run
-  the same check. `make test-extra` sets it to the straight build dirs of
-  `~/.config/emacs`.
+  whose defface spec uses only `:inherit` are fine. `make test-full` installs a short list of
+  popular third-party packages (`eink-themes-test-popular-packages` in
+  `tests/test-helper.el`) with `package.el` into `.cache/emacs`, requires
+  them, and runs the same check.
   Batch mode runs on a terminal frame, so check spec values, not
   `face-attribute` results.
 - the leak test must pass with zero offenders for built-in libraries and
-  for every third-party package present under the straight build dirs.
+  for every package that `make test-full` installs.

@@ -10,11 +10,8 @@
 
 ;;; Commentary:
 
-;; Run the tests with `make test'.  When the environment variable
-;; EINK_THEMES_EXTRA_LOAD_PATH holds a colon-separated list of
-;; directories, the tests also check the third-party packages found
-;; there.  `make test-extra' sets it to the straight build directories
-;; of ~/.config/emacs.
+;; Run the tests with `make test'.  `make test-full' also installs the
+;; packages in `eink-themes-test-popular-packages' and checks them.
 
 ;;; Code:
 
@@ -52,21 +49,6 @@
     emacs-authors-mode eieio-custom erts-mode pcvs semantic semantic/decorate
     semantic/util-modes srecode/fields tooltip simple help-mode display-line-numbers)
   "Built-in libraries that define faces with colors.")
-
-(defconst eink-themes-test--package-libraries
-  '(anzu avy ace-window cape citre company company-box consult corfu dape
-    diff-hl dired-sidebar diredfl dired-git-info doom-modeline eat elfeed
-    embark evil evil-goggles evil-snipe evil-traces flycheck ghostel
-    git-gutter helpful highlight-quoted hl-todo jinx jupyter macrostep
-    magit magit-section git-commit git-rebase with-editor llama marginalia
-    markdown-mode minuet copilot nerd-icons nerd-icons-completion
-    nerd-icons-corfu nerd-icons-dired nerd-icons-ibuffer notmuch orderless
-    org-roam org-appear org-msg rainbow-delimiters rg deadgrep
-    spacious-padding symbol-overlay treemacs vertico vertico-quick
-    vterm vundo wgrep yasnippet keycast olivetti pdf-tools undo-tree
-    imenu-list breadcrumb denote hydra tldr neotree dashboard csv-mode
-    web-mode ess ein code-cells async)
-  "Third-party packages that define faces with colors.")
 
 (defun eink-themes-test--call-with-clean-themes (function)
   "Call FUNCTION with no theme enabled, then restore the enabled themes."
@@ -348,18 +330,16 @@ Prompts that a library may show are answered with no."
             eink-themes-test--builtin-libraries))
   (eink-themes-test--check-leaks))
 
-(ert-deftest eink-themes-test-no-leaks-in-extra-packages ()
-  (skip-unless (not (string-empty-p
-                     (or (getenv "EINK_THEMES_EXTRA_LOAD_PATH") ""))))
-  (dolist (directory (split-string (getenv "EINK_THEMES_EXTRA_LOAD_PATH")
-                                   path-separator t))
-    (add-to-list 'load-path (expand-file-name directory)))
+(defvar eink-themes-test-popular-packages)
+
+(ert-deftest eink-themes-test-no-leaks-in-popular-packages ()
+  (skip-unless (getenv "EINK_THEMES_TEST_FULL"))
   (message "Built-in libraries that did not load: %S"
            (eink-themes-test--require-libraries
             eink-themes-test--builtin-libraries))
   (message "Packages that did not load: %S"
            (eink-themes-test--require-libraries
-            eink-themes-test--package-libraries))
+            eink-themes-test-popular-packages))
   (eink-themes-test--check-leaks))
 
 (provide 'eink-themes-test)

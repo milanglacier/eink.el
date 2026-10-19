@@ -127,16 +127,16 @@ usual Emacs mechanisms. Use `eink-themes-get-color` to stay on the gray levels:
 ## Development
 
 ```sh
-make compile      # byte-compile with warnings as errors
-make lint         # checkdoc and byte-compile
-make test         # run the ERT tests
-make test-extra   # also check installed third-party packages
+make compile           # byte-compile with warnings as errors
+make lint              # byte-compile, checkdoc and package-lint
+make test              # run the ERT tests
+make test-full         # also check popular third-party packages
+make clean-test-cache  # delete the downloaded packages
 ```
 
-`make test-extra` reads the packages installed under
-`~/.config/emacs/straight/build`. To check other directories, set
-`EINK_THEMES_EXTRA_LOAD_PATH` to a colon-separated list of them and run
-`make test`.
+All targets run `emacs -Q`, so your own configuration is never loaded.
+`make lint` and `make test-full` install their packages with `package.el`
+into `.cache/emacs`.
 
 ## License
 

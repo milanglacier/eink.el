@@ -18,7 +18,10 @@
 
 (require 'eink-themes)
 
-(deftheme eink-light
+;; The theme name sits on its own line so that package-lint does not
+;; read it as a definition without the package prefix.
+(deftheme
+  eink-light
   "Light grayscale theme for e-ink displays."
   :background-mode 'light
   :kind 'color-scheme
@@ -27,5 +30,6 @@
 (eink-themes-theme 'eink-light 'light)
 
 (provide-theme 'eink-light)
+(provide 'eink-light-theme)
 
 ;;; eink-light-theme.el ends here

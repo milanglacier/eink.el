@@ -507,7 +507,8 @@ colors are mapped to grays between the colors LOW and HIGH."
       (eglot-diagnostic-tag-deprecated-face ((t :strike-through t)))
       (eglot-mode-line ((t :weight bold)))
       (eglot-code-action-indicator-face ((t :weight bold)))
-      (eldoc-highlight-function-argument ((t :weight bold :underline t))))
+      ;; `,'' stops package-lint from reading the face as a removed function.
+      (,'eldoc-highlight-function-argument ((t :weight bold :underline t))))
 
     ;; Headings
     `(
@@ -2028,7 +2029,8 @@ colors are mapped to grays between the colors LOW and HIGH."
       (image-dired-thumb-header-file-size ((t :foreground ,fg2)))
       (image-dired-thumb-mark ((t :background ,bg3 :weight bold)))
       (strokes-char ((t :background ,bg2)))
-      (testcover-1value ((t :background ,bg2)))
+      ;; `,'' stops package-lint from reading the face as a removed function.
+      (,'testcover-1value ((t :background ,bg2)))
       (testcover-nohits ((t :background ,bg3)))
       (spam ((t :foreground ,fg0 :background ,bg2)))
       (vcursor ((t :foreground ,bg0 :background ,fg0 :underline t)))
